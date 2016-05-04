@@ -7,6 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-ghgghghghhghg
+<form action=""> 
+
+<div class="form-group">
+<label for="username">Enter your name here:</label>
+<input type="text" class="form-group" id="name"/>
+</div>
+
+
+<div class="form-group">
+<label for="pass">Password:</label>
+<input type="password" class="form-group" id="cpass"/>
+</div>
+<div class="form-group">
+<label for="butt">Go Back</label>
+<input type="submit" class="form-group" id="cpass"/>
+</div>
+</form>
 </body>
 </html>
