@@ -1,25 +1,48 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Music Hub: Product Details</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <c:url var="img" value="/resources/images" />
+    <c:url var="bts" value="/resources/bootstrap/css" />
+    <c:url var="bts1" value="/resources/bootstrap/js" />
+    <title>MUSICHUB</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="resources/bootstrap/css/product.css">
+   <link href="${bts}/bootstrap.min.css" rel="stylesheet">
+   <script src="${bts1}/jquery-2.2.3.js"></script>
+    <script src="${bts1}/bootstrap.min.js"></script>
+ 
     <style type="text/css">
-        body { padding-top:50px; }
-    </style>
 
-    <!-- JS -->
-    <script src="resources/bootstrap/js/angular.min.js"></script>
-    <script src="resources/bootstrap/js/product.js"></script>
+ .carousel-inner img
+  {
+      width:50%; /* Set width to 50% */
+      margin: auto;
+      min-height:200px;
+  }
+    </style>    
+     <!-- JS -->
+    <script src="${bts1}/angular.min.js"></script>
+   
+    <script>
+    angular.module('sortApp', [])
 
-</head>
+    .controller('mainController', function($scope) {
+
+    
+      $scope.music = <%=request.getAttribute("list")%>;
+      
+    });
+    </script>
+    </head>
+
+   
+   
 <body>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -29,16 +52,48 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
+      
+      
+      <div class="container-fluid">
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1" ></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="${img}/music5.jpg" alt="Image1">
+                
+      </div>
+
+      <div class="item">
+        <img src="${img}/music4.jpg" alt="Image2">
+        
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
+</div>
+      
+      
+      
       <a class="navbar-brand" href="#"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">MUSICHUB</a></li>
-        <li><a href="#">About Us</a></li>
-     <li><a href="register">Move On Register</a></li>
+        <li><a href="#">About</a></li>
+     <li><a href="register">Register</a></li>
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-        Categories of Products
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
          <li><a href="Products">Guitar</a></li>
@@ -73,22 +128,22 @@
         <td>
           <a href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse">
             Product ID 
-            <span ng-show="sortType == 'id' && !sortReverse" class="glyphicon glyphicon-arrow-down"></span>
-            <span ng-show="sortType == 'id' && sortReverse" class="glyphicon gylphicon-arrow-up"></span>
+            <span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
           </a>
         </td>
         <td>
           <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
           Music Type
-            <span ng-show="sortType == 'name' && !sortReverse" class="glyphicon glyphicon-arrow-down"></span>
-            <span ng-show="sortType == 'name' && sortReverse" class="glyphicon gylphicon-arrow-up"></span>
+            <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
           </a>
         </td>
         <td>
           <a href="#" ng-click="sortType = 'brand'; sortReverse = !sortReverse">
          Brand
-            <span ng-show="sortType == 'brand' && !sortReverse" class="glyphicon glyphicon-arrow-down"></span>
-            <span ng-show="sortType == 'brand' && sortReverse" class="glyphicon gylphicon-arrow-up"></span>
+            <span ng-show="sortType == 'brand' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'brand' && sortReverse" class="fa fa-caret-up"></span>
           </a>
         </td>
      
@@ -97,15 +152,15 @@
         <td>
           <a href="#" ng-click="sortType = 'price; sortReverse = !sortReverse">
             Price 
-            <span ng-show="sortType == 'price' && !sortReverse" class="glyphicon glyphicon-arrow-down"></span>
-            <span ng-show="sortType == 'price' && sortReverse" class="glyphicon gylphicon-arrow-up"></span>
+            <span ng-show="sortType == 'price' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'price' && sortReverse" class="fa fa-caret-up"></span>
           </a>
         </td>
         <td>
           <a href="#" ng-click="sortType = 'category'; sortReverse = !sortReverse">
             Category
-            <span ng-show="sortType == 'category' && !sortReverse" class="glyphicon glyphicon-arrow-down"></span>
-            <span ng-show="sortType == 'category' && sortReverse" class="glyphicon gylphicon-arrow-up"></span>
+            <span ng-show="sortType == 'category' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'category' && sortReverse" class="fa fa-caret-up"></span>
           </a>
         </td>
         
@@ -116,15 +171,15 @@
     
     <tbody>
       <tr ng-repeat="ab in music | orderBy:sortType:sortReverse | filter:searchMusic">
-        <td>{{ ab.id }}</td>
-        <td>{{ ab.name }}</td>
+        <td>{{ ab.pid }}</td>
+        <td>{{ ab.type }}</td>
         <td>{{ ab.brand }}</td>
-        
-       
         <td>{{ ab.price }}</td>
         <td>{{ ab.category }}</td>
       </tr>
     </tbody>
+
+    
     
   </table>
  

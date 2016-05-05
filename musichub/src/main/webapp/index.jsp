@@ -1,25 +1,31 @@
 <!DOCTYPE html>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <c:url var="img" value="/resources/images" />
+    <c:url var="bts" value="/resources/bootstrap/css" />
+    <c:url var="bts1" value="/resources/bootstrap/js" />
     <title>MUSICHUB</title>
 
-   <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-   <script src="resources/bootstrap/js/jquery-2.2.3.js"></script>
-    <script src="resources/bootstrap/js/bootstrap.min.js"></script>
+   <link href="${bts}/bootstrap.min.css" rel="stylesheet">
+   <script src="${bts1}/jquery-2.2.3.js"></script>
+    <script src="${bts1}/bootstrap.min.js"></script>
  
     <style type="text/css">
 
  .carousel-inner img
   {
-      width:50%; /* Set width to 100% */
+      width:50%; /* Set width to 50% */
       margin: auto;
       min-height:200px;
   }
     </style>    
     </head>
     <body>
+    
   <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -63,12 +69,12 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="resources/images/music4.jpg" alt="Image1">
+        <img src="${img}/music3.jpg" alt="Image1">
                 
       </div>
 
       <div class="item">
-        <img src="resources/images/music6.jpg" alt="Image2">
+        <img src="${img}/music6.jpg" alt="Image2">
         
       </div>
     </div>
@@ -80,19 +86,20 @@
       <span class="glyphicon glyphicon-chevron-right"></span></a>
 </div>
 </div>
+<br><br>
 <div class="container text-center">    
   
   <div class="row">
     <div class="col-sm-4">
-      <img src="resources/images/music1.jpg" class="img-responsive" style="width:100%" alt="Image">
+      <a href="Products"><img src="${img}/music1.jpg" class="img-responsive" style="width:100%" alt="Image"></a>
      
     </div>
     <div class="col-sm-4"> 
-      <img src="resources/images/music2.jpg" class="img-responsive" style="width:100%" alt="Image">
+      <a href="Products"><img src="${img}/music2.jpg" class="img-responsive" style="width:100%" alt="Image"></a>
       
     </div>
     <div class="col-sm-4">
-      <img src="resources/images/music3.jpg" class="img-responsive" style="width:100%" alt="Image">
+     <a href="Products"> <img src="${img}/music3.jpg" class="img-responsive" style="width:100%" alt="Image"></a>
       
       </div>
    
