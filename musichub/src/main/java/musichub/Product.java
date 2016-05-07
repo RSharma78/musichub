@@ -1,14 +1,29 @@
 package musichub;
+import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Repository;
+@Entity
+@Table(name = "Product")
 public class Product 
 {
-	private String pid;
+	@Id
+	@GeneratedValue
+	private int pid;
 	private String type;
 	private String brand;
 	private int price;
 	private String category;
 	
-	public Product(String pid,String type,String brand,int price,String category)
+	public Product()
+	{
+		
+	}
+	public Product(int pid,String type,String brand,int price,String category)
 	{
 		this.pid=pid;
 		this.type=type;
@@ -17,11 +32,11 @@ public class Product
 		this.category=category;
 	}
 	
-	public String getPID()
+	public int getPID()
 	{
 		return this.pid;
 	}
-	public void setPID(String pid)
+	public void setPID(int pid)
 	{
 		this.pid=pid;
 	}
@@ -32,7 +47,7 @@ public class Product
 	}
 	public void setType(String type)
 	{
-		this.pid=type;
+		this.type=type;
 	}
 	
 	public String getBrand()
@@ -41,7 +56,7 @@ public class Product
 	}
 	public void setBrand(String brand)
 	{
-		this.pid=brand;
+		this.brand=brand;
 	}
 	
 	public String getCategory()

@@ -163,9 +163,7 @@
             <span ng-show="sortType == 'category' && sortReverse" class="fa fa-caret-up"></span>
           </a>
         </td>
-        
-        
-        
+               
       </tr>
     </thead>
     
@@ -176,13 +174,39 @@
         <td>{{ ab.brand }}</td>
         <td>{{ ab.price }}</td>
         <td>{{ ab.category }}</td>
+       
+        
       </tr>
     </tbody>
-
-    
-    
+  
   </table>
+ <table>
  
+  <tr ng-repeat="disp in music | orderBy:sortType:sortReverse | filter:searchMusic">
+    
+        <td>{{ disp.pid }}</td>
+        <td>{{ disp.type }}</td>
+        <td>{{ disp.brand }}</td>
+   
+        <td>{{ disp.price }}</td>
+        <td>{{ disp.category }}</td>
+       
+      
+        <td>
+        <form action="displayProducts" method=post>
+        <input type="hidden" value={{disp.pid}} name="pid"/>
+        <input type="hidden" value={{disp.type}} name="type"/>
+        <input type="hidden" value={{disp.brand}} name="brand"/>
+        <input type="hidden" value={{disp.price}} name="price"/>
+        <input type="hidden" value={{disp.category}} name="category"/>
+        
+        <button type="submit">MoveToNext</button> </form>  </td>
+   </tr>
+
+     ​
+  </table>
+  
+  
   
   <p class="text-center">
     <a href="index">Music hub</a>
